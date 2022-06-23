@@ -1,5 +1,13 @@
+<!--
+ * @Author: itmanyong itmanyong@gmail.com
+ * @Date: 2022-06-24 01:13:43
+ * @LastEditors: itmanyong itmanyong@gmail.com
+ * @LastEditTime: 2022-06-24 01:16:50
+ * @FilePath: \vite-plugin-free-mock\README.md
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 # vite-plugin-free-mock
-
+# 开发中~~~暂不推荐
 #### 介绍
 适用于vite的数据模拟插件
 

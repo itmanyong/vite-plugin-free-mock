@@ -1,0 +1,67 @@
+{
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "name": "vite-plugin-free-mock",
+  "author": "itmanyong",
+  "module": "dist/vite-plugin-free-mock.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/vite-plugin-free-mock.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/vite-plugin-free-mock.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^7.0.8",
+    "@types/mockjs": "^1.0.6",
+    "@types/qs": "^6.9.7",
+    "husky": "^8.0.1",
+    "size-limit": "^7.0.8",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.4.0",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "mockjs": "^1.1.0",
+    "qs": "^6.10.5",
+    "regexparam": "^2.0.0",
+    "vite": "^3.0.0-alpha.12"
+  },
+  "peerDependencies": {
+    "mockjs": "^1.1.0",
+    "vite": "^3.0.0-alpha.12"
+  }
+}
