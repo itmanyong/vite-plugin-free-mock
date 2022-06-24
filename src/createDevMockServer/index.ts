@@ -2,15 +2,7 @@
  * @Author: itmanyong itmanyong@gmail.com
  * @Date: 2022-06-24 21:00:51
  * @LastEditors: itmanyong itmanyong@gmail.com
- * @LastEditTime: 2022-06-25 01:10:19
- * @FilePath: \vite-plugin-free-mock\src\createDevMockServer\index.ts
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- */
-/*
- * @Author: itmanyong itmanyong@gmail.com
- * @Date: 2022-06-24 13:57:18
- * @LastEditors: itmanyong itmanyong@gmail.com
- * @LastEditTime: 2022-06-24 22:59:07
+ * @LastEditTime: 2022-06-25 03:35:38
  * @FilePath: \vite-plugin-free-mock\src\createDevMockServer\index.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */

@@ -1,45 +1,126 @@
-<!--
- * @Author: itmanyong itmanyong@gmail.com
- * @Date: 2022-06-24 01:13:43
- * @LastEditors: itmanyong itmanyong@gmail.com
- * @LastEditTime: 2022-06-24 01:16:50
- * @FilePath: \vite-plugin-free-mock\README.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
-# vite-plugin-free-mock
-# 开发中~~~暂不推荐
-#### 介绍
-适用于vite的数据模拟插件
+<br>
+<h1 align='center'>vite-plugin-free-mock</h1>
+<p align='center'><em>Fast simulation of API data</em></p>
+<p align='center'><a href="">Online sample</a></p>
+<p align='center'>
+<b>English</b> | <a href="https://github.com/itmanyong/vite-plugin-free-mock/blob/master/README.en.md">简体中文</a>
+</p>
 
-#### 软件架构
-软件架构说明
+## features
 
+- Fully regularized urls that can be easily customized with[regexparam](https://github.com/lukeed/regexparam)
 
-#### 安装教程
+- Customize the URL prefix/suffix, request type, delay simulation, and status code
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+- Custom virtual database with [mockjs](https://github.com/nuysoft/Mock/wiki/Getting-Started) to easily simulate database data
 
-#### 使用说明
+- Supports automatic parsing of query, Params, body, and headers parameters and automatic response parameters
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+- Log, global parameters, and module parameters have priority
 
-#### 参与贡献
+- [mockjs](https://github.com/nuysoft/Mock/wiki/Getting-Started) is built in with full functionality
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+- Built-in multi-level request/response interceptor
 
+- There are many different content-type send methods built in
 
-#### 特技
+- Fully controlled REQ/RES randomly assemble personalized demand responses
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+- The TypeScript support ~ ~
+
+## Installation
+
+pnpm User(recommended)
+
+```bash
+pnpm i vite-plugin-free-mock -D
+```
+
+yarn User
+
+```bash
+pnpm add vite-plugin-free-mock -D
+```
+
+## 配置
+
+```bash
+# vite.config.js
+import { defineConfig } from 'vite';
+# 导入插件
+import vitePluginApiMock from 'vite-plugin-free-mock';
+# 导入插件配置
+import pluginConfig from './mock/createFreeMock'
+export default defineConfig({
+    plugins:[
+        # 配置到插件列表中(顺序无关)
+        vitePluginApiMock(pluginConfig),
+        # ...otherPlugins,
+    ],
+    # ...otherViteConfig
+})
+```
+
+## Parameter Configuration Options [Complete detailed configuration]()
+
+##### Plug-in top-level options---vitePluginFreeMockOptions
+
+```bash
+{
+  # Interface module configuration array
+  apis?: array;
+  # Virtual database generation configurationG
+  db?: object;
+  # Global level default parameter
+  global?: object;
+  # Whether to enable the plug-in function in the development environment
+  devMock?: boolean;
+  # Check whether the plug-in function is enabled in the production environment
+  prodMock?: boolean;
+  # According to the request | log response
+  logger?: boolean;
+}
+```
+
+##### Interface module Options---apis
+
+```bash
+{
+
+}
+
+```
+
+##### The interface options---apis/item
+
+```bash
+{
+
+}
+
+```
+
+##### Virtual database options---db
+
+```bash
+{
+
+}
+
+```
+
+##### Global default parameter options--global
+
+```bash
+{
+
+}
+
+```
+
+## The sample
+
+## plan
+
+- API for automatically generating specifications from virtual databases (customizable specifications??)
+- The completion list~~

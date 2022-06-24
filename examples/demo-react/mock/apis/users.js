@@ -2,7 +2,7 @@
  * @Author: itmanyong itmanyong@gmail.com
  * @Date: 2022-06-22 21:56:49
  * @LastEditors: itmanyong itmanyong@gmail.com
- * @LastEditTime: 2022-06-25 01:08:58
+ * @LastEditTime: 2022-06-25 03:20:25
  * @FilePath: \vite-plugin-api-mock\examples\demo-react\mock\apis\users.js
  * @Description:
  * 1.直接导出接口配置对象
