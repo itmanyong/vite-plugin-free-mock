@@ -2,7 +2,7 @@
  * @Author: itmanyong itmanyong@gmail.com
  * @Date: 2022-06-22 21:56:49
  * @LastEditors: itmanyong itmanyong@gmail.com
- * @LastEditTime: 2022-06-24 17:12:05
+ * @LastEditTime: 2022-06-25 01:08:58
  * @FilePath: \vite-plugin-api-mock\examples\demo-react\mock\apis\users.js
  * @Description:
  * 1.直接导出接口配置对象
@@ -29,7 +29,7 @@ export default {
     {
       url: '/delete/:id',
       method: 'delete',
-      response(ctx) {
+      render(ctx) {
         console.log('/mock/user/delete/:id\n', ctx);
       },
     },
@@ -37,7 +37,7 @@ export default {
     {
       url: '/update/:id',
       method: 'put',
-      response(ctx) {
+      render(ctx) {
         console.log('/mock/user/update/:id\n', ctx);
       },
     },
@@ -45,9 +45,18 @@ export default {
     {
       url: '/post/add',
       method: 'post',
-      render({ req, res, query, params, body }, db) {
+      render({ mockjs, req, res, params, query, body, meta, headers }, db) {
+        // console.log(query, body, params);
         // console.log('/mock/user/post/:id\n', ctx);
-        // res.send({ name: '656666666' });
+        res.sendJson(mockjs.mock({
+          'list|1-50': [
+            {
+              'id|+1': 1,
+              name: '@cname',
+              avatar: mockjs.Random.image('200x100'),
+            },
+          ],
+        }).list);
       },
     },
     /**
@@ -57,11 +66,11 @@ export default {
      * 测试状态:ok
      */
     {
-      url:'/test/render',
-      method:'post',
-      render({ req, res, query, params, body }, db){
+      url: '/test/render',
+      method: 'post',
+      render({ req, res, query, params, body }, db) {
         // res.end('6666')
-      }
-    }
+      },
+    },
   ],
 };

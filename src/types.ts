@@ -2,12 +2,14 @@
  * @Author: itmanyong itmanyong@gmail.com
  * @Date: 2022-06-22 03:40:03
  * @LastEditors: itmanyong itmanyong@gmail.com
- * @LastEditTime: 2022-06-24 16:45:43
+ * @LastEditTime: 2022-06-25 00:36:22
  * @FilePath: \vite-plugin-api-mock\src\types.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 
 import type { Mockjs } from 'mockjs';
+import { IncomingMessage } from 'connect'
+import { ServerResponse } from 'http';
 
 export type Recordable<T = any> = Record<string, T>;
 
@@ -44,6 +46,29 @@ export interface DB_FUNCTION_PARAMS {
   mockjs: Mockjs;
 }
 
+export interface RESPONSE_CTX {
+  req: IncomingMessage;
+  res: ServerResponse;
+  params: Recordable;
+  query: Recordable;
+  body: Recordable;
+  meta: Recordable;
+  headers: Recordable<string>;
+  types: CONTENT_TYPE;
+  intercept: {
+    global: any;
+    module: any;
+    api: any;
+  },
+  mockjs:Mockjs
+}
+
+export type RENDER_TYPE = (ctx: RESPONSE_CTX, db: DB_VIRTUAL_RESULT, _options: OPTIONS_RESULT) => void
+
+export type HANLDER_REQUEST = (ctx: RESPONSE_CTX, api: API_RESULT_TYPE, _options: OPTIONS_RESULT) => any;
+
+export type HANLDER_RESPONSE = (resData: any, api: API_RESULT_TYPE, _options: OPTIONS_RESULT) => void;
+
 export declare interface PRE_CONFIG {
   prefix?: string;
   suffix?: string;
@@ -52,6 +77,9 @@ export declare interface PRE_CONFIG {
   statusCode?: number;
   strict?: boolean;
   meta?: object;
+  responseType?: keyof CONTENT_TYPE;
+  handlerRequest?: HANLDER_REQUEST;
+  handlerResponse?: HANLDER_RESPONSE;
 }
 
 export declare interface API_CONFIG_TYPE {
@@ -62,7 +90,10 @@ export declare interface API_CONFIG_TYPE {
   timeout?: number;
   statusCode?: number;
   strict?: boolean;
-  render?: ResponseType;
+  responseType?: keyof CONTENT_TYPE;
+  render?: RENDER_TYPE;
+  handlerRequest?: HANLDER_REQUEST;
+  handlerResponse?: HANLDER_RESPONSE;
 }
 
 export interface API_RESULT_TYPE {
@@ -73,8 +104,16 @@ export interface API_RESULT_TYPE {
   timeout: number;
   statusCode: number;
   strict: boolean;
-  render: ResponseType;
   meta: object;
+  render: RENDER_TYPE;
+  responseType: keyof CONTENT_TYPE;
+  handlerRequest: HANLDER_REQUEST[];
+  handlerResponse: HANLDER_RESPONSE[];
+  intercept: {
+    global: any;
+    module: any;
+    api: any;
+  }
 }
 
 export interface APIS_CONFIG_TYPE extends PRE_CONFIG {

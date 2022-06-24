@@ -2,7 +2,7 @@
  * @Author: itmanyong itmanyong@gmail.com
  * @Date: 2022-06-24 15:35:48
  * @LastEditors: itmanyong itmanyong@gmail.com
- * @LastEditTime: 2022-06-24 17:15:15
+ * @LastEditTime: 2022-06-25 00:11:43
  * @FilePath: \vite-plugin-free-mock\src\utils\regexparam.ts
  * @Description: regexparam匹配库的辅助工具函数
  */
@@ -28,5 +28,5 @@ export function execParams(
     }
     return out;
   }
-  return null
+  return null;
 }
