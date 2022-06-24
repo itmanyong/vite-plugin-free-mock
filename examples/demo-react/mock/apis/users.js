@@ -2,7 +2,7 @@
  * @Author: itmanyong itmanyong@gmail.com
  * @Date: 2022-06-22 21:56:49
  * @LastEditors: itmanyong itmanyong@gmail.com
- * @LastEditTime: 2022-06-24 00:57:31
+ * @LastEditTime: 2022-06-24 17:12:05
  * @FilePath: \vite-plugin-api-mock\examples\demo-react\mock\apis\users.js
  * @Description:
  * 1.直接导出接口配置对象
@@ -21,8 +21,8 @@ export default {
     // 查
     {
       url: '/get',
-      response({ req, res, query, params, body }, db) {
-        res.send(db.users)
+      render({ req, res, query, params, body }, db) {
+        console.log(db.users);
       },
     },
     // 删
@@ -45,9 +45,9 @@ export default {
     {
       url: '/post/add',
       method: 'post',
-      response({ req, res, query, params, body }, db) {
+      render({ req, res, query, params, body }, db) {
         // console.log('/mock/user/post/:id\n', ctx);
-        res.send({ name: '656666666' });
+        // res.send({ name: '656666666' });
       },
     },
     /**
@@ -60,7 +60,7 @@ export default {
       url:'/test/render',
       method:'post',
       render({ req, res, query, params, body }, db){
-        res.end('6666')
+        // res.end('6666')
       }
     }
   ],

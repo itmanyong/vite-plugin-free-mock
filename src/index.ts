@@ -2,63 +2,48 @@
  * @Author: itmanyong itmanyong@gmail.com
  * @Date: 2022-06-22 03:28:11
  * @LastEditors: itmanyong itmanyong@gmail.com
- * @LastEditTime: 2022-06-24 01:11:15
+ * @LastEditTime: 2022-06-24 16:13:55
  * @FilePath: \vite-plugin-api-mock\src\index.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
-/**
- * @desc mock插件开发计划~~~~
- * @desc 功能计划
- * URL支持字符串、正则、query参数、路径参数、动态参数可忽略、后缀
- * method类型支持全部，格外新增all类型(表示只要匹配url类型可不管)
- * timeout可设置延时时间
- * code可设置返回状态码
- * response需要返回，接收参数为:第一个={req,res,query,params,body,env}，第二个=database
- * 全局可配置URL前缀/后缀、超时、默认请求类型、默认状态码。(全部配置支持函数返回结果)
- * 支持配置数据库、自动生成各种URL、支持工厂函数生成请求
- * 内置mockjs生成规则
- * 支持请求不同的Content-Type解析
- * 支持外部传入数据统筹到全局定义为env
- * 内部提供不同的send方法
- * 模块级别的请求/响应拦截器
- * @desc 问题
- * 请求排队阻塞问题
- */
-import { OPTIONS_CONFIG } from './types';
-import { ViteDevServer } from 'vite';
+import { OPTIONS_CONFIG, OPTIONS_RESULT, APIS_VIRTUAL_RESULT } from './types';
+import { ResolvedConfig, ViteDevServer } from 'vite'
+import { options_config } from './contans';
+import { merge } from 'lodash';
+import renderVirtualDatabase from './utils/renderVirtualDatabase';
+import renderVirtualApi from './utils/renderVirtualApi'
+import { createDevMockServer } from './createDevMockServer';
 
-import {
-  merge,
-  renderVirtualDataBase,
-  renderVirtualApi,
-  createDevMockMiddleware,
-} from './utils';
-import { defaultOption } from './contans';
 
 export default function vitePluginApiMock(options: OPTIONS_CONFIG = {}) {
   // 融合配置
-  const _options = merge(defaultOption, options);
+  let _options = {} as OPTIONS_RESULT;
   // 生成数据池
-  const virtualDataBase = renderVirtualDataBase(_options.db);
+  let _db = {};
   // 生成接口
-  const virtualApi = renderVirtualApi(_options.apis, _options.global);
-  // 为接口的url生成正则
+  let _apis = {} as APIS_VIRTUAL_RESULT;
+  // 是否生产
+  let _isDev: boolean = false;
+  // vite配置
+  let _viteConfig: ResolvedConfig;
   return {
     name: 'vite:api-mock',
     enforce: 'pre',
-    configureServer(server: ViteDevServer) {
-      server.middlewares.use((req, res, next) =>
-        createDevMockMiddleware(
-          {
-            options: virtualDataBase,
-            db: virtualDataBase,
-            apis: virtualApi,
-          },
-          req,
-          res,
-          next
-        )
-      );
+    configResolved(resolvedConfig: ResolvedConfig) {
+      _viteConfig = resolvedConfig;
+      _isDev = _viteConfig.command === 'serve';
+      _options = merge(options_config, options) as OPTIONS_RESULT;
+      if (_options.devMock || _options.prodMock) {
+        _db = renderVirtualDatabase(_options);
+        _apis = renderVirtualApi(_options);
+      }
+    },
+    async configureServer(server: ViteDevServer) {
+      if (_options.devMock && _isDev) {
+        const mockMiddleware = await createDevMockServer(_options, _db, _apis)
+
+        server.middlewares.use(mockMiddleware)
+      }
     },
   };
 }

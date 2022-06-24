@@ -45,16 +45,23 @@
   ],
   "devDependencies": {
     "@size-limit/preset-small-lib": "^7.0.8",
+    "@types/body": "^5.1.1",
+    "@types/connect": "^3.4.35",
+    "@types/lodash": "^4.14.182",
     "@types/mockjs": "^1.0.6",
     "@types/qs": "^6.9.7",
     "husky": "^8.0.1",
+    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
     "size-limit": "^7.0.8",
     "tsdx": "^0.14.1",
     "tslib": "^2.4.0",
     "typescript": "^4.7.4"
   },
   "dependencies": {
+    "body": "^5.1.0",
     "chalk": "^4.1.2",
+    "connect": "^3.7.0",
     "mockjs": "^1.1.0",
     "qs": "^6.10.5",
     "regexparam": "^2.0.0",

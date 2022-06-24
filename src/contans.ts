@@ -1,29 +1,43 @@
 /*
  * @Author: itmanyong itmanyong@gmail.com
+ * @Date: 2022-06-24 13:42:10
+ * @LastEditors: itmanyong itmanyong@gmail.com
+ * @LastEditTime: 2022-06-24 18:15:14
+ * @FilePath: \vite-plugin-free-mock\src\contans.ts
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
+/*
+ * @Author: itmanyong itmanyong@gmail.com
  * @Date: 2022-06-22 05:14:29
  * @LastEditors: itmanyong itmanyong@gmail.com
- * @LastEditTime: 2022-06-23 23:40:07
+ * @LastEditTime: 2022-06-24 16:04:46
  * @FilePath: \vite-plugin-api-mock\src\contans.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
-// 初始options值
-import { OPTIONS_CONFIG, APIS_TYPE } from './types';
+import { OPTIONS_CONFIG, PRE_CONFIG, APIS_VIRTUAL_RESULT, CONTENT_TYPE } from './types';
 
-export const defaultOption: OPTIONS_CONFIG = {
-  global: {
-    prefix: '',
-    suffix: '',
-    method: 'get',
-    timeout: 1024 * 1,
-    statusCode: 200,
-    meta: {},
-    strict: false,
-  },
-  apis: [],
-  db: {},
+export const log_prefix: string = 'vite:free-mock';
+
+export const pre_config: PRE_CONFIG = {
+  prefix: '',
+  suffix: '',
+  method: 'get',
+  timeout: 1024 * 1,
+  statusCode: 200,
+  strict: false,
+  meta: {},
 };
 
-export const defaultApiTypes: APIS_TYPE = {
+export const options_config: OPTIONS_CONFIG = {
+  global: pre_config,
+  apis: [],
+  db: {},
+  devMock: true,
+  prodMock: false,
+  logger: false,
+};
+
+export const apis_virtual_result: APIS_VIRTUAL_RESULT = {
   get: [],
   post: [],
   put: [],
@@ -32,5 +46,26 @@ export const defaultApiTypes: APIS_TYPE = {
   options: [],
   head: [],
   trace: [],
-  all: [],
 };
+
+export const utf8: string = 'charset=UTF-8'
+
+export const content_type: CONTENT_TYPE = {
+  // application
+  'xhtml': 'application/xhtml+xml',
+  'dataXml': 'application/xml',
+  'atomXml': 'application/atom+xml',
+  'json': 'application/json',
+  'pdf': 'application/pdf',
+  'word': 'application/msword',
+  'stream': 'application/octet-stream',
+  'form': 'application/x-www-form-urlencoded',
+  // 媒体
+  'html': 'text/html',
+  'text': 'text/plain',
+  'xml': 'text/xml',
+  'jpeg': 'image/jpeg',
+  'gif': 'image/gif',
+  'png': 'image/png',
+  'formData': 'multipart/form-data',
+}

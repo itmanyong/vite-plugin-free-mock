@@ -2,10 +2,11 @@
  * @Author: itmanyong itmanyong@gmail.com
  * @Date: 2022-06-22 03:56:32
  * @LastEditors: itmanyong itmanyong@gmail.com
- * @LastEditTime: 2022-06-22 04:10:19
+ * @LastEditTime: 2022-06-24 13:50:09
  * @FilePath: \vite-plugin-api-mock\docs\design.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
+
 - URL 支持字符串、正则、query 参数、路径参数、动态参数可忽略、后缀
 - method 类型支持全部，格外新增 all 类型(表示只要匹配 url 类型可不管)
 - timeout 可设置延时时间(支持函数动态生成)
@@ -19,3 +20,17 @@
 - @desc URL 匹配库
 - regexparam---https://github.com/lukeed/regexparam
 - Path-to-RegExp---https://github.com/pillarjs/path-to-regexp
+
+## 功能设计
+- URL支持配置正则/字符串
+    字符串会自动生成正则
+- 自动获取params、query、body参数以key-value方式提供
+- timeout超时自定义
+- statusCode返回状态设置
+- 
+
+## API 设计
+
+## 请求流程
+
+## 响应流程
