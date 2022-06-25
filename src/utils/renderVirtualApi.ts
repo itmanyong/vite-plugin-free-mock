@@ -2,7 +2,7 @@
  * @Author: itmanyong itmanyong@gmail.com
  * @Date: 2022-06-24 21:00:51
  * @LastEditors: itmanyong itmanyong@gmail.com
- * @LastEditTime: 2022-06-25 00:11:42
+ * @LastEditTime: 2022-06-25 15:04:37
  * @FilePath: \vite-plugin-free-mock\src\utils\renderVirtualApi.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -39,14 +39,8 @@ export default (_options: OPTIONS_RESULT): APIS_VIRTUAL_RESULT => {
         let pattern = api.pattern || null;
         let keys = api.keys || [];
         let meta = merge(global.meta || {}, rest.meta || {});
-        let handlerRequest = [
-          rest.handlerRequest || undefined,
-          api.handlerRequest || undefined,
-        ];
-        let handlerResponse = [
-          rest.handlerResponse || undefined,
-          api.handlerResponse || undefined,
-        ];
+        let handlerRequest = rest.handlerRequest || undefined;
+        let handlerResponse = rest.handlerResponse || undefined;
         if (url && !pattern) {
           const rules = parse(url);
           pattern = rules.pattern;

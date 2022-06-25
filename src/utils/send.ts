@@ -1,3 +1,11 @@
+/*
+ * @Author: itmanyong itmanyong@gmail.com
+ * @Date: 2022-06-24 21:00:51
+ * @LastEditors: itmanyong itmanyong@gmail.com
+ * @LastEditTime: 2022-06-25 15:05:12
+ * @FilePath: \vite-plugin-free-mock\src\utils\send.ts
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 import { content_type } from '../contans';
 import { OPTIONS_RESULT, API_RESULT_TYPE } from '../types';
 import { isString, isBuffer, isArrayBuffer } from 'lodash';
@@ -15,8 +23,7 @@ export function send(
   return function(...rest: any[]): void {
     // 响应拦截器触发(api->module->global)
     const { handlerResponse } = api;
-    handlerResponse[1]?.(rest[0], api, _options);
-    handlerResponse[0]?.(rest[0], api, _options);
+    handlerResponse?.(rest[0], api, _options);
     _options.global.handlerResponse?.(rest[0], api, _options);
     // 预检数据格式
     if (!isString(rest[0]) && !isBuffer(rest[0]) && !isArrayBuffer(rest[0])) {

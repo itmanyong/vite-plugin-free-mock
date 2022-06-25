@@ -2,7 +2,7 @@
  * @Author: itmanyong itmanyong@gmail.com
  * @Date: 2022-06-22 03:40:03
  * @LastEditors: itmanyong itmanyong@gmail.com
- * @LastEditTime: 2022-06-25 03:01:01
+ * @LastEditTime: 2022-06-25 16:33:58
  * @FilePath: \vite-plugin-api-mock\src\types.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -60,7 +60,7 @@ export interface RESPONSE_CTX {
     module: any;
     api: any;
   },
-  mockjs:Mockjs
+  mockjs: Mockjs
 }
 
 export type RENDER_TYPE = (ctx: RESPONSE_CTX, db: DB_VIRTUAL_RESULT, _options: OPTIONS_RESULT) => void
@@ -92,8 +92,6 @@ export declare interface API_CONFIG_TYPE {
   strict?: boolean;
   responseType?: keyof CONTENT_TYPE;
   render?: RENDER_TYPE;
-  handlerRequest?: HANLDER_REQUEST;
-  handlerResponse?: HANLDER_RESPONSE;
 }
 
 export interface API_RESULT_TYPE {
@@ -107,8 +105,8 @@ export interface API_RESULT_TYPE {
   meta: object;
   render: RENDER_TYPE;
   responseType: keyof CONTENT_TYPE;
-  handlerRequest: HANLDER_REQUEST[];
-  handlerResponse: HANLDER_RESPONSE[];
+  handlerRequest: HANLDER_REQUEST;
+  handlerResponse: HANLDER_RESPONSE;
   intercept: {
     global: any;
     module: any;
@@ -125,7 +123,7 @@ export type APIS_VIRTUAL_RESULT = {
 };
 
 export interface DB_CONFIG_TYPE {
-  [key: string]: any[] | ((v: DB_FUNCTION_PARAMS) => any[] | object);
+  [key: string]: any[] | object | ((v: DB_FUNCTION_PARAMS) => any[] | object);
 }
 
 export interface DB_VIRTUAL_RESULT {

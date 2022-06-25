@@ -2,7 +2,7 @@
  * @Author: itmanyong itmanyong@gmail.com
  * @Date: 2022-06-24 21:00:51
  * @LastEditors: itmanyong itmanyong@gmail.com
- * @LastEditTime: 2022-06-25 03:35:38
+ * @LastEditTime: 2022-06-25 15:04:57
  * @FilePath: \vite-plugin-free-mock\src\createDevMockServer\index.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -70,9 +70,7 @@ export async function createDevMockServer(
         _options.global.handlerRequest?.(handlerParams, matchApi, _options) ||
         null;
       intercept.module =
-        handlerRequest[0]?.(handlerParams, matchApi, _options) || null;
-      intercept.api =
-        handlerRequest[1]?.(handlerParams, matchApi, _options) || null;
+        handlerRequest?.(handlerParams, matchApi, _options) || null;
       // 触发render
       if (render) {
         // 重写res的send方法
