@@ -4,7 +4,9 @@
 </p>
 <h1 align='center'>VITE-PLUGIN-FREE-MOCK</h1>
 <p align='center'><em>快速的 模拟 API 数据</em></p>
-<p align='center'><a href="">在线 示例</a></p>
+<p align='center'>
+<a href="">在线示例</a> | <a href="https://github.com/itmanyong/vite-plugin-free-mock/issues">问题建议</a>
+</p>
 <p align='center'><a href="https://www.npmjs.com/package/vite-plugin-free-mock"><img src="https://img.shields.io/github/package-json/v/itmanyong/vite-plugin-free-mock?label=npm" alt="npm" /></a> <a href="https://github.com/itmanyong/vite-plugin-free-mock"><img src="https://img.shields.io/github/package-json/v/itmanyong/vite-plugin-free-mock?label=github" alt="GitHub" /></a>
 </p><p align='center'>简体中文</b></p>
 
@@ -191,4 +193,5 @@ export default defineConfig({
 
 - 根据虚拟数据库自动生成规范的 API(可定制规范???)
 - 生产环境支持???
-- 补全单测~~
+- 支持API级别的拦截???
+- 补全单测~~~~~
